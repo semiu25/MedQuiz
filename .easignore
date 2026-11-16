@@ -1,0 +1,6 @@
+# Exclude development-only files from EAS builds
+static-build/
+.local/
+.cache/
+node_modules/.cache/
+*.log
