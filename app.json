@@ -34,10 +34,12 @@
       "backgroundColor": "#0F172A",
       "themeColor": "#0D9488",
       "lang": "en",
-      "scope": "/",
-      "startUrl": "/",
+      "scope": "/MedQuiz/",
+      "startUrl": "/MedQuiz/",
       "display": "standalone",
-      "orientation": "portrait"
+      "orientation": "portrait",
+      "bundler": "metro",
+      "output": "static"
     },
     "plugins": [
       [
@@ -51,7 +53,8 @@
     ],
     "experiments": {
       "typedRoutes": true,
-      "reactCompiler": true
+      "reactCompiler": true,
+      "baseUrl": "/MedQuiz"
     },
     "extra": {
       "router": {

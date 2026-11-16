@@ -65,11 +65,35 @@ npm run start:ios
 
 You can also scan the QR code printed by Expo using Expo Go on a compatible device.
 
+## Deploy to GitHub Pages
+
+This repository is configured to publish the actual interactive web app at:
+
+`https://semiu25.github.io/MedQuiz/`
+
+The GitHub Actions workflow in `.github/workflows/deploy-pages.yml` builds the Expo web app whenever changes are pushed to `main` and deploys the generated `dist/` folder to GitHub Pages. The Expo base path is configured for the `/MedQuiz` project site, and a `404.html` fallback supports direct navigation to app routes.
+
+### Enable GitHub Pages once
+
+1. Open the repository on GitHub and go to **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+3. Push this project to the repository's `main` branch, or run the **Deploy MedQuiz to GitHub Pages** workflow from the **Actions** tab.
+4. When the workflow finishes successfully, open `https://semiu25.github.io/MedQuiz/`.
+
+To build the web app locally, run:
+
+```bash
+npm ci
+npm run build:web
+```
+
+The static site will be generated in `dist/`.
+
 ## Backend status
 
 The quiz currently gets its questions from the bundled local question bank in `lib/questions.ts` and stores player preferences, seen-question history, and leaderboard entries on the device. The Express server in `server/` is a starter scaffold; it currently does not expose quiz, account, or leaderboard API routes. The Drizzle schema is a minimal example user table, not the app's active leaderboard database.
 
-The server and database are therefore **not required to run the quiz locally**. The existing Replit-oriented production build script is retained for projects that still use that deployment workflow; it expects Replit deployment environment variables and is not a general-purpose GitHub Pages build.
+The server and database are therefore **not required to run the quiz locally**. The existing Replit-oriented production build script is retained for projects that still use that deployment workflow. GitHub Pages uses the separate `build:web` command and does not require the Express server or database.
 
 ## Project structure
 
